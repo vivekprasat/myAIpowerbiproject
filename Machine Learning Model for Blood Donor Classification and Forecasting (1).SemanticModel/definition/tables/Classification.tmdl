@@ -1,0 +1,115 @@
+table Classification
+	lineageTag: 3c40443d-0bcc-479f-aa5f-03c67d918490
+
+	column Model
+		dataType: string
+		lineageTag: 7b726e2b-ba96-4caf-b1b0-5eb69371afea
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accuracy
+		dataType: double
+		lineageTag: f960a7f5-5f9d-480f-8a33-b6e288fdd222
+		summarizeBy: sum
+		sourceColumn: Accuracy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AUC
+		dataType: string
+		lineageTag: 4ad98e3e-5ad5-4471-92a6-9b691c8cf683
+		summarizeBy: none
+		sourceColumn: AUC
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recall
+		dataType: double
+		lineageTag: f06862cd-995f-49bc-99e2-9328256bca29
+		summarizeBy: sum
+		sourceColumn: Recall
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Prec.'
+		dataType: double
+		lineageTag: a089094b-ec56-4d47-b4ca-29ae3ad5f97e
+		summarizeBy: sum
+		sourceColumn: Prec.
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column F1
+		dataType: string
+		lineageTag: 5e840041-aa7f-42a0-833f-c1d03ed284d2
+		summarizeBy: none
+		sourceColumn: F1
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kappa
+		dataType: double
+		lineageTag: 8af912e7-6d8f-453d-9de7-45e70b5dcda1
+		summarizeBy: sum
+		sourceColumn: Kappa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MCC
+		dataType: double
+		lineageTag: 8fb3d17d-16e1-41f6-b6ec-4719b004e66f
+		summarizeBy: sum
+		sourceColumn: MCC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TT (Sec)'
+		dataType: double
+		lineageTag: 174131be-6c1f-4c1f-bd6c-13ef59cdbf24
+		summarizeBy: sum
+		sourceColumn: TT (Sec)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Classification-17e9f614-9ba7-41c2-8535-0d2f3bc99b4f = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/pycaret/pycaret/master/datasets/blood.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Promoted Headers",500),
+				    #"Run Python script" = Python.Execute("# 'dataset' holds the input data for this script#(lf)#(lf)# import classification module and setup environment#(lf)from pycaret.classification import *#(lf)clf1 = setup(dataset, target = 'Class')#(lf)#(lf)best_model = compare_models( verbose = False, include = ['lr', 'dt', 'lightgbm', 'lda', 'knn' ])#(lf)dataset = pull()#(lf)#(lf)rf = create_model(""rf"", verbose = False)#(lf)tuned_rf = tune_model(rf, verbose = False)#(lf)rf = finalize_model(tuned_rf)#(lf)#(lf)#save_model(tuned_rf, 'C:/Users/vivek/Desktop/automl/tuned_rf')#(lf)#(lf)",[dataset=#"Removed Bottom Rows"]),
+				    dataset = #"Run Python script"{[Name="dataset"]}[Value],
+				    #"Replaced Value" = Table.ReplaceValue(dataset,".",",",Replacer.ReplaceText,{"Accuracy", "AUC", "Recall", "Prec.", "F1", "Kappa", "MCC", "TT (Sec)"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"Accuracy", type number}, {"AUC", type number}, {"Recall", type number}, {"Prec.", type number}, {"F1", type number}, {"Kappa", type number}, {"MCC", type number}, {"TT (Sec)", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

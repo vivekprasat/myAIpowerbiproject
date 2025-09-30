@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "c5fe95e9539655a306b5",
+  "position": {
+    "x": 166.36363636363637,
+    "y": 394.09090909090912,
+    "z": 5000,
+    "height": 279.54545454545456,
+    "width": 514.09090909090912
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Class"
+                }
+              },
+              "queryRef": "Datos Bllod.Class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Frequency"
+                }
+              },
+              "queryRef": "Datos Bllod.Frequency"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Monetary"
+                }
+              },
+              "queryRef": "Datos Bllod.Monetary"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Recency"
+                }
+              },
+              "queryRef": "Datos Bllod.Recency"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Time"
+                }
+              },
+              "queryRef": "Datos Bllod.Time"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# El código siguiente, que crea un dataframe y quita las filas duplicadas, siempre se ejecuta y actúa como un preámbulo del script: \r\n\r\n# dataset = pandas.DataFrame(Class, Frequency, Monetary, Recency, Time)\r\n# dataset = dataset.drop_duplicates()\r\n\r\n# Pegue o escriba aquí el código de script:\r\nimport matplotlib.pyplot as plt\r\nimport seaborn as sns\r\n\r\ncorrelation = dataset.corr()\r\nsns.heatmap(correlation, annot = True, fmt = ''.2f'', cmap = ''Blues'')\r\nplt.title(''Correlation Between Numerical Variables'')\r\n\r\nplt.show ()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

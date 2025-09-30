@@ -1,0 +1,59 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 500.79998779296875,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1141.3,
+            "y": 24
+          },
+          "nodeIndex": "Predictión_blood",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 508.2,
+            "y": 92
+          },
+          "nodeIndex": "blood_data",
+          "nodeLineageTag": "004c1e65-3c92-42e6-91be-147094e1a8dc",
+          "size": {
+            "height": 168,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1572.7,
+            "y": 0
+          },
+          "nodeIndex": "Classification",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

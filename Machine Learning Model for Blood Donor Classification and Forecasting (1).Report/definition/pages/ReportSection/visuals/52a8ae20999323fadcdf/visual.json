@@ -1,0 +1,209 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "52a8ae20999323fadcdf",
+  "position": {
+    "x": 165.91757661148293,
+    "y": 103.87883057414582,
+    "z": 2000,
+    "height": 256.81155336386053,
+    "width": 393.87389926030295
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Monetary"
+                }
+              },
+              "queryRef": "Datos Bllod.Monetary"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Recency"
+                }
+              },
+              "queryRef": "Datos Bllod.Recency"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Time"
+                }
+              },
+              "queryRef": "Datos Bllod.Time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Frequency"
+                }
+              },
+              "queryRef": "Datos Bllod.Frequency"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "blood_data"
+                    }
+                  },
+                  "Property": "Class"
+                }
+              },
+              "queryRef": "Datos Bllod.Class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Predictión_blood"
+                    }
+                  },
+                  "Property": "predicted class"
+                }
+              },
+              "queryRef": "Predictión_blood.predicted class",
+              "nativeQueryRef": "predicted class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Predictión_blood"
+                    }
+                  },
+                  "Property": "prediction_score"
+                }
+              },
+              "queryRef": "Predictión_blood.prediction_score",
+              "nativeQueryRef": "prediction_score"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "blood_data"
+                  }
+                },
+                "Property": "Recency"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRows'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Prediction score of the tuned model'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "underline": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

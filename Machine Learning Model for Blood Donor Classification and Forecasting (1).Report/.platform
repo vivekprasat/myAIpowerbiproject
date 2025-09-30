@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Machine Learning Model for Blood Donor Classification and Forecasting (1)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f1f452d9-6757-48f0-8734-d3e888546339"
+  }
+}

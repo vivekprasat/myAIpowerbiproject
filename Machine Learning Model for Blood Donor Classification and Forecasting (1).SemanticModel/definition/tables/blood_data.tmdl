@@ -1,0 +1,56 @@
+table blood_data
+	lineageTag: 004c1e65-3c92-42e6-91be-147094e1a8dc
+
+	column Recency
+		dataType: string
+		lineageTag: 83f6c731-b840-4c4c-a14e-d6ce9d65bdd8
+		summarizeBy: none
+		sourceColumn: Recency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Frequency
+		dataType: string
+		lineageTag: ec1b0118-8743-4efe-897c-24c9f7201cd1
+		summarizeBy: none
+		sourceColumn: Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monetary
+		dataType: string
+		lineageTag: 150c277e-f406-4363-93ff-dc4264c52531
+		summarizeBy: none
+		sourceColumn: Monetary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: string
+		lineageTag: 7adf8aa9-598e-4490-b5f5-23f1714cfe45
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: b2b5d818-0630-4f6b-ae90-fd9a8251dcf0
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition blood_data-5d00a8bb-8aa1-41b7-bcc1-cd88c3ee7bb0 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/pycaret/pycaret/master/datasets/blood.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    #"Promoted Headers"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,6 @@
+relationship f33890e2-344e-11b8-3f85-28ac1740b490
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Predictión_blood.'predicted class'
+	toColumn: blood_data.Class
+

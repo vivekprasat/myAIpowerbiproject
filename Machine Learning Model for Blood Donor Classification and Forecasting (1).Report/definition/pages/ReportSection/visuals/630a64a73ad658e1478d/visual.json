@@ -1,0 +1,239 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "630a64a73ad658e1478d",
+  "position": {
+    "x": 717.62803234501348,
+    "y": 438.16711590296495,
+    "z": 6000,
+    "height": 212.18328840970349,
+    "width": 533.04582210242586
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Clasificacion.Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "Accuracy"
+                }
+              },
+              "queryRef": "Clasificacion.Accuracy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "AUC"
+                }
+              },
+              "queryRef": "Clasificacion.AUC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "Prec."
+                }
+              },
+              "queryRef": "Clasificacion.Prec."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "Recall"
+                }
+              },
+              "queryRef": "Clasificacion.Recall"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "F1"
+                }
+              },
+              "queryRef": "Clasificacion.F1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Classification"
+                    }
+                  },
+                  "Property": "TT (Sec)"
+                }
+              },
+              "queryRef": "Clasificacion.TT (Sec)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Classification"
+                  }
+                },
+                "Property": "AUC"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "185.4932318104907D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Clasificacion.Model"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "62.69259538859242D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Clasificacion.TT (Sec)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRows'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model summary and informations of other model used for tunning'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "underline": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

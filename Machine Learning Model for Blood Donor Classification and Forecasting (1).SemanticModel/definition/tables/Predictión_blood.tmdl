@@ -1,0 +1,82 @@
+table Predictión_blood
+	lineageTag: 30399005-5385-4b4b-a982-926703d54b3d
+
+	column Recency
+		dataType: int64
+		formatString: 0
+		lineageTag: 975500eb-239e-435a-8266-1fd9a335d9a4
+		summarizeBy: sum
+		sourceColumn: Recency
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Frequency
+		dataType: string
+		lineageTag: 4eed1d36-7aa4-4dde-b1e5-7c0a236b9bff
+		summarizeBy: none
+		sourceColumn: Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monetary
+		dataType: int64
+		formatString: 0
+		lineageTag: db86bbd3-210d-4bf2-b281-5d371b813534
+		summarizeBy: sum
+		sourceColumn: Monetary
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: string
+		lineageTag: 8e3c928d-0b87-4290-ac82-8cc164b28b90
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: f3e82a10-825e-47c4-8a48-0a0a9f2bae1c
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'predicted class'
+		dataType: string
+		lineageTag: bad3dd55-fb95-4b25-a8da-7b1e3edac2a7
+		summarizeBy: none
+		sourceColumn: predicted class
+
+		annotation SummarizationSetBy = Automatic
+
+	column prediction_score
+		dataType: string
+		lineageTag: 416ab8b5-4bf1-488b-920b-d03b5a8d0137
+		summarizeBy: none
+		sourceColumn: prediction_score
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Predictión_blood-9a3a0b96-a53e-433b-b49b-2a0b57e449e6 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/pycaret/pycaret/master/datasets/blood.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Promoted Headers",500),
+				    #"Run Python script" = Python.Execute("# 'dataset' holds the input data for this script#(lf)# 'dataset' holds the input data for this script#(lf)#(lf)# import classification module and setup environment#(lf)from pycaret.classification import *#(lf)clf1 = setup(dataset, target = 'Class')#(lf)#(lf)best_model = compare_models( verbose = False, include = ['lr', 'dt', 'lightgbm', 'lda', 'knn' ])#(lf)# dataset = pull()#(lf)#(lf)rf = create_model(""rf"", verbose = False)#(lf)tuned_rf = tune_model(rf, verbose = False)#(lf)rf = finalize_model(tuned_rf)#(lf)# predict charges#(lf)dataset = predict_model(rf, data=dataset)",[dataset=#"Removed Bottom Rows"]),
+				    dataset = #"Run Python script"{[Name="dataset"]}[Value],
+				    #"Renamed Columns" = Table.RenameColumns(dataset,{{"prediction_label", "predicted class"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
